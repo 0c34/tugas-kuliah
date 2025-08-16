@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PWA Sederhana - Service Worker</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+text-align: center;
+margin-top: 50px;
+}
+#status {
+margin-top: 20px;
+font-weight: bold;
+color: blue;
+}
+</style>
+</head>
+<body>
+<h1>Selamat Datang di PWA Sederhana!</h1>
+<p>Ini adalah contoh dasar Service Worker Sederhana</p>
+<div id="status">Memeriksa Service Worker...</div>
+<script>
+// Memeriksa apakah browser mendukung Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('Service Worker berhasil didaftarkan:', registration.scope);
+        document.getElementById('status').innerText = 'Service Worker berhasil didaftarkan dan sedang aktif!';
+      })
+      .catch(error => {
+        console.error('Pendaftaran Service Worker gagal:', error);
+        document.getElementById('status').innerText = 'Pendaftaran Service Worker gagal.';
+      });
+  });
+} else {
+  document.getElementById('status').innerText = 'Browser Anda tidak mendukung Service Worker.';
+  console.warn('Browser tidak mendukung Service Worker.');
+}
+</script>
+</body>
+</html>
