@@ -23,7 +23,7 @@
   <main class="wrap">
     <header>
       <h1>PWA – Cache First</h1>
-      <div><strong>Nama:</strong> Sulhaedir &nbsp;|&nbsp; <strong>NIM:</strong> 225411113 <!-- [MODIFIKASI] Menampilkan identitas --> </div>
+      <div><strong>Nama:</strong> Sulhaedir &nbsp;|&nbsp; <strong>NIM:</strong> 225411113 </div>
     </header>
 
     <section class="card">
@@ -37,7 +37,7 @@
   </main>
 
   <script>
-    // Status online/offline di UI
+
     const badge = document.getElementById('net-status');
     function refreshStatus() {{
       const online = navigator.onLine;
@@ -48,7 +48,6 @@
     window.addEventListener('offline', refreshStatus);
     refreshStatus();
 
-    // Registrasi Service Worker
     if ('serviceWorker' in navigator) {{
       window.addEventListener('load', () => {{
         navigator.serviceWorker.register('./sw.js', { scope: './' })
